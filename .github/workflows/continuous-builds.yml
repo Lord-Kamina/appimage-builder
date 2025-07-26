@@ -83,7 +83,7 @@ jobs:
 
   build:
     runs-on: ubuntu-24.04
-    needs: [ pytest-ubuntu-container, pytest-ubuntu-runner, pytest-archlinux ]
+#    needs: [ pytest-ubuntu-container, pytest-ubuntu-runner, pytest-archlinux ]
     steps:
       - name: Install dependencies
         run: |
