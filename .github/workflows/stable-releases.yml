@@ -8,7 +8,7 @@ on:
     tags:
       - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 env:
-  APPIMAGE_BUILDER_REMOTE_REPO_OWNER: ${{ github.repo_owner }}
+  APPIMAGE_BUILDER_REMOTE_REPO_OWNER: ${{ github.repository_owner }}
 
 jobs:
   build:
