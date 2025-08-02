@@ -92,7 +92,7 @@ class AppRunBinariesResolver:
     def _download_release_asset(self, asset, path):
         path.parent.mkdir(parents=True, exist_ok=True)
         url = "https://github.com/%s/AppRun/releases/download/%s/%s" % (
-            environ.get("REMOTE_REPO_OWNER", "AppImageCrafters"),
+            environ.get("APPIMAGE_BUILDER_REMOTE_REPO_OWNER", "AppImageCrafters"),
             self.apprun_version,
             asset,
         )
