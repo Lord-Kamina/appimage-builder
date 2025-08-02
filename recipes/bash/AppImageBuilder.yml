@@ -13,7 +13,7 @@ script:
 AppDir:
   app_info:
     id: org.gnu.bash
-    version: 4.4.20
+    version: 5.2.21
     exec: bin/bash
 
   apt:
@@ -67,4 +67,5 @@ AppDir:
 
 
 AppImage:
+  comp: zstd
   arch: x86_64
