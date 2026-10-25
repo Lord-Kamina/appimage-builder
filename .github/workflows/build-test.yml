@@ -107,15 +107,11 @@ jobs:
           appimage-builder --skip-test
       - name: Pack bash
         run: |
-          set -x
           # build bash
-          ls -l /
-          readlink -m /lib64
           BUILDER_PATH=$(find $PWD -name appimage-builder-*.AppImage)
           chmod +x "$BUILDER_PATH"
           cd ${{ github.workspace }}/recipes/bash/
           "$BUILDER_PATH" --skip-test
-          set +x
       - name: Test bash
         run: |
           cd ${{ github.workspace }}/recipes/bash/

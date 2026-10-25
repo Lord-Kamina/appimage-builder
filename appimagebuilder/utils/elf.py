@@ -26,19 +26,6 @@ def has_soname(path):
 
     Elf must have a SONAME tag in the dynamic section
     """
-#     readelf_path = shell.require_executable("readelf")
-#     # note: don't use `shell=True` as it forces the usage of the system shell which cases a failure if readelf is embed.
-#     _proc = subprocess.run(
-#         [readelf_path, "-d", path],
-#         stdout=subprocess.PIPE,
-#         stderr=subprocess.PIPE,
-#     )
-# 
-#     has_soname_tag = False
-#     if _proc.returncode == 0:
-#         output = _proc.stdout.decode("utf-8")
-#         has_soname_tag = "SONAME" in output
-#     return has_soname_tag
     try:
         binary = lief.parse(str(path))
     except Exception:
@@ -60,19 +47,6 @@ def has_start_symbol(path):
     The `_start` symbol must be present in every runnable elf file.
     http://www.dbp-consulting.com/tutorials/debugging/linuxProgramStartup.html
     """
-#     readelf_path = shell.require_executable("readelf")
-    # note: don't use `shell=True` as it forces the usage of the system shell which cases a failure if readelf is embed.
-#     _proc = subprocess.run(
-#         [readelf_path, "-s", path],
-#         stdout=subprocess.PIPE,
-#         stderr=subprocess.PIPE,
-#     )
-# 
-#     has_main_method = False
-#     if _proc.returncode == 0:
-#         output = _proc.stdout.decode("utf-8")
-#         has_main_method = "_start" in output
-#     return has_main_method
     try:
         binary = lief.parse(str(path))
     except Exception:
