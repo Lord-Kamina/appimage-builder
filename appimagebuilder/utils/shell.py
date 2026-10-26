@@ -28,6 +28,9 @@ def require_executable(tool):
 def assert_successful_result(proc):
     if proc.returncode:
         logging.error('"%s" execution failed' % proc.args)
+        if proc.stdout:
+            for line in proc.stdout.decode().splitlines():
+                logging.error(line)
         if proc.stderr:
             for line in proc.stderr.decode().splitlines():
                 logging.error(line)

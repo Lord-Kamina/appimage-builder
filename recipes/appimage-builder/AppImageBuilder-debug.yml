@@ -25,6 +25,7 @@ AppDir:
         key_url: 'http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x871920d1991bc93c'
 
     include:
+      - apt
       - bash
       - coreutils
       - binutils
