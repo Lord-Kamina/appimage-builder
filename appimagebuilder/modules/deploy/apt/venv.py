@@ -159,7 +159,11 @@ class Venv:
         command = "apt-get update"
         self.logger.info(command)
 
-        _proc = subprocess.run(command, shell=True, env=self._get_environment())
+        _proc = subprocess.Popen(command, shell=True, env=self._get_environment(), stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        if self.logger.getEffectiveLevel() == logging.DEBUG:
+            for line in _proc.stdout:
+                self.logger.debug(line)
+        _proc.wait()
         shell.assert_successful_result(_proc)
 
     def search_names(self, patterns: [str]):
