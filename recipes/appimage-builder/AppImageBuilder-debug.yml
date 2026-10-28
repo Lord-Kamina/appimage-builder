@@ -15,7 +15,7 @@ AppDir:
     # Set the python executable as entry point
     exec: usr/bin/python{{APPIMAGE_BUILDER_PY_VERSION}}
     # Set the application main script path as argument. Use '$@' to forward CLI parameters
-    exec_args: "$APPDIR/usr/local/bin/appimage-builder $@"
+    exec_args: "-m pdb $APPDIR/usr/local/bin/appimage-builder $@"
 
   apt:
     arch: amd64
@@ -61,6 +61,7 @@ AppDir:
       # Set python home
       # See https://docs.python.org/3/using/cmdline.html#envvar-PYTHONHOME
       PYTHONHOME: '${APPDIR}/usr'
+      PYTHONBREAKPOINT: '0'
       # Path to the site-packages dir or other modules dirs
       # See https://docs.python.org/3/using/cmdline.html#envvar-PYTHONPATH
       PYTHONPATH: '${APPDIR}/usr/lib/python{{APPIMAGE_BUILDER_PY_VERSION}}/site-packages'

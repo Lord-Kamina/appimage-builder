@@ -104,7 +104,7 @@ jobs:
           cd ${{ github.workspace }}/recipes/appimage-builder
           export APPIMAGE_BUILDER_VERSION=$(appimage-builder --version | head -1 | cut -f 2 -d" ")
           echo "APPIMAGE_BUILDER_VERSION=${APPIMAGE_BUILDER_VERSION}" >> $GITHUB_ENV
-          appimage-builder --skip-test
+          appimage-builder --log DEBUG --skip-test
       - name: Pack bash
         run: |
           # build bash

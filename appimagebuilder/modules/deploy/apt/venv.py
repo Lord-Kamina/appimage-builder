@@ -161,13 +161,13 @@ class Venv:
         try:
             _proc = subprocess.run(command, shell=True, env=self._get_environment(), check=True)
         except subprocess.CalledProcessError as e:
-            logger.error(f"Command failed with exit code: {e.returncode}")
-            logger.error(f"Error Output: {e.stderr}")
+            self.logger.error(f"Command failed with exit code: {e.returncode}")
+            self.logger.error(f"Error Output: {e.stderr}")
 
-        if self.logger.getEffectiveLevel() == logging.DEBUG:
-            for line in _proc.stdout:
-                self.logger.debug(line)
-        # _proc.wait()
+        # if self.logger.getEffectiveLevel() == logging.DEBUG:
+        #     for line in _proc.stdout:
+        #         self.logger.debug(line)
+        # # _proc.wait()
         shell.assert_successful_result(_proc)
 
     def search_names(self, patterns: [str]):

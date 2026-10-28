@@ -10,6 +10,7 @@
 #  The above copyright notice and this permission notice shall be included in
 #  all copies or substantial portions of the Software.
 import lief
+import logging
 
 def has_magic_bytes(path):
     with open(path, "rb") as f:
@@ -27,13 +28,14 @@ def has_soname(path):
     Elf must have a SONAME tag in the dynamic section
     """
     try:
+        breakpoint()
         binary = lief.parse(str(path))
     except Exception:
         return False
- 
+
     if binary is None:
         return False
- 
+
     return any(
         entry.tag == lief.ELF.DynamicEntry.TAG.SONAME
         for entry in binary.dynamic_entries
@@ -48,6 +50,7 @@ def has_start_symbol(path):
     http://www.dbp-consulting.com/tutorials/debugging/linuxProgramStartup.html
     """
     try:
+        breakpoint()
         binary = lief.parse(str(path))
     except Exception:
         return False
