@@ -4,6 +4,7 @@ on:
   workflow_call:
 env:
   APPIMAGE_BUILDER_REMOTE_REPO_OWNER: ${{ github.repository_owner }}
+  PYTHONBREAKPOINT: 0
 
 jobs:
   pytest-ubuntu-container:
