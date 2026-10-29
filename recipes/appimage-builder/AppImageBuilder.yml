@@ -9,6 +9,7 @@ script:
   - mkdir -p $TARGET_APPDIR/usr/share/icons/hicolor/scalable/apps $TARGET_APPDIR/usr/bin $TARGET_APPDIR/opt "$BUILD_DIR"
   - cp ../../resources/appimage-builder.svg $TARGET_APPDIR/usr/share/icons/hicolor/scalable/apps
   - cp ../../resources/application-vnd.appimage.svg $TARGET_APPDIR/usr/share/icons/hicolor/scalable/apps
+  - sudo apt-get purge rust-coreutils coreutils-from-uutils  --allow-remove-essential 
 
 AppDir:
   app_info:
@@ -32,6 +33,8 @@ AppDir:
       - apt
       - bash
       - coreutils
+      - gnu-coreutils
+      - coreutils-from-gnu
       - binutils
       - util-linux
       - file
@@ -43,7 +46,9 @@ AppDir:
       - squashfs-tools
       - strace
       - zsync
-    exclude: []
+    exclude: 
+      - coreutils-from-uutils
+      - rust-coreutils
 
   after_bundle: |
     # configure tools
