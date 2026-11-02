@@ -61,6 +61,7 @@ class ExecutablesPatcher:
     def patch_binary_executable(self, path: pathlib.Path):
         try:
             binary = lief.parse(path.__str__())
+            self.logger.debug(f"Patching interpreter path for: {path}")
             interpreter_path = binary.interpreter
             if interpreter_path:
                 patched_interpreter_path = interpreter_path.lstrip("/")

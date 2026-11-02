@@ -86,7 +86,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y rust-coreutils- coreutils-from-uutils- gnu-coreutils coreutils-from-gnu --auto-remove --allow-remove-essential 
+          sudo apt-get install -y rust-coreutils- coreutils-from-uutils- gnu-coreutils coreutils-from-gnu --auto-remove --allow-remove-essential
           sudo apt-get install -y patchelf desktop-file-utils libgdk-pixbuf-2.0-dev fakeroot strace git lsb-release python3-build python3-setuptools adwaita-icon-theme libffi-dev
 
           sudo wget https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage -O /usr/local/bin/appimagetool
@@ -114,7 +114,7 @@ jobs:
           BUILDER_PATH=$(find $PWD -name appimage-builder-*.AppImage)
           chmod +x "$BUILDER_PATH"
           cd ${{ github.workspace }}/recipes/bash/
-          "$BUILDER_PATH" --skip-test
+          "$BUILDER_PATH" --log DEBUG --skip-test
       - name: Test bash
         run: |
           cd ${{ github.workspace }}/recipes/bash/
